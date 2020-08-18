@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/vsi-open/alpine-glibc
+FROM izhaohucom/alpine-glibc
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.2 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/$GRPC_HEALTH_PROBE_VERSION/grpc_health_probe-linux-amd64 && \

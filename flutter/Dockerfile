@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/vsi-open/protogen AS protogen
+FROM izhaohucom/protogen AS protogen
 
 FROM cirrusci/flutter:1.17.1
 

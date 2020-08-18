@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/vsi-open/alpine
+FROM izhaohucom/alpine
 
 ENV LANG=C.UTF-8
 

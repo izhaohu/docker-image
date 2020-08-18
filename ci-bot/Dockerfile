@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/vsi-open/alpine-glibc
+FROM izhaohucom/alpine-glibc
 
 RUN apk add --no-cache curl git make openssh-client rsync jq
 

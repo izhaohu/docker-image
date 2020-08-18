@@ -18,9 +18,9 @@ RUN cd /tmp \
     && go get -u github.com/libgo/migrate \
     && go get -u github.com/kyoh86/richgo
 
-FROM registry.cn-shanghai.aliyuncs.com/vsi-open/protogen AS protogen
+FROM izhaohucom/protogen AS protogen
 
-FROM registry.cn-shanghai.aliyuncs.com/vsi-open/ci-bot AS bot
+FROM izhaohucom/ci-bot AS bot
 
 FROM golang:1.15.0-buster
 
