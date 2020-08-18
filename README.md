@@ -12,8 +12,8 @@
      alpine-glibc-grpc  ci-bot
                      ↓  ↓
      protogen  →    go-dev
-        ↓
-       node
+     ↓      ↓
+    node  flutter
 ```
 
 ```bash
@@ -26,6 +26,7 @@ docker pull registry-vpc.cn-shanghai.aliyuncs.com/vsi-open/ci-bot
 docker pull registry-vpc.cn-shanghai.aliyuncs.com/vsi-open/protogen
 docker pull registry-vpc.cn-shanghai.aliyuncs.com/vsi-open/go-dev
 docker pull registry-vpc.cn-shanghai.aliyuncs.com/vsi-open/node
+docker pull registry-vpc.cn-shanghai.aliyuncs.com/vsi-open/flutter
 
 docker image prune
 ```
