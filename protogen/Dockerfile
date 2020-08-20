@@ -60,4 +60,4 @@ RUN cd /tmp \
     && tar zxvf /tmp/protoc-gen-doc.tgz -C /usr/local/bin --strip-components 1 \
     && pip3 install grpcio grpcio-tools \
     && ln -sf /bin/bash /bin/sh \
-    && /tmp/*
+    && rm -rf /tmp/*
