@@ -25,11 +25,11 @@ RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29
     && GRADLE_VERSION=5.6.2 \
     && sudo mkdir -p $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/9st6wgf78h16so49nn74lgtbb \
     && cd $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/9st6wgf78h16so49nn74lgtbb \
-    && sudo wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
+    && sudo wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
     && GRADLE_VERSION=5.6.4 \
     && sudo mkdir -p $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/ankdp27end7byghfw1q2sw75f \
     && cd $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/ankdp27end7byghfw1q2sw75f \
-    && sudo wget https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
+    && sudo wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
     && sudo chown -R cirrus:cirrus $HOME/.gradle \
     && cd /tmp/protobuf-src && pub global activate protoc_plugin \
     && sudo rm -rf /tmp/*
