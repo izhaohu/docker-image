@@ -1,16 +1,8 @@
-FROM golang:1.15.0-buster as builder
+FROM golang:1.15.0-alpine AS builder
 
-RUN echo 'deb http://mirrors.aliyun.com/debian buster main\n\
-deb http://mirrors.aliyun.com/debian-security buster/updates main\n\
-deb http://mirrors.aliyun.com/debian buster-updates main'\
-> /etc/apt/sources.list
+RUN apk add --no-cache build-base curl git make
 
-RUN apt-get update && apt-get install -y
-
-ENV \
-    CGO_ENABLED=0 \
-    GO111MODULE=on \
-    GOPROXY="https://goproxy.cn,direct"
+ENV CGO_ENABLED=0
 
 RUN cd /tmp \
     && go get -u github.com/mgechev/revive \
@@ -54,14 +46,12 @@ ENV \
     PROTOTOOL_PROTOC_BIN_PATH=/usr/local/bin/protoc \
     PROTOTOOL_PROTOC_WKT_PATH=/usr/include
 
-RUN echo 'deb http://mirrors.aliyun.com/debian buster main\n\
-deb http://mirrors.aliyun.com/debian-security buster/updates main\n\
-deb http://mirrors.aliyun.com/debian buster-updates main'\
-> /etc/apt/sources.list
-
 RUN cd /tmp \
-    && apt-get update && apt-get install -y upx jq \
+    && sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
+    && sed -i 's|security.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list
+    && apt-get update && apt-get install -y --no-install-recommends git upx jq && rm -rf /var/lib/apt/lists/* \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone \
     && mkdir -p ~/.kube ~/.ssh && chmod 700 ~/.ssh \
     && echo "Host *\n\tStrictHostKeyChecking no\n" > ~/.ssh/config \
-    && echo "dash dash/sh boolean false" | debconf-set-selections && DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
+    && echo "dash dash/sh boolean false" | debconf-set-selections \
+    && DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash

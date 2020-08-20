@@ -1,7 +1,6 @@
 FROM golang:1.15.0-alpine AS builder
 
-RUN sed -i 's|http://dl-cdn.alpinelinux.org|https://mirrors.aliyun.com|g' /etc/apk/repositories \
-    && apk add --no-cache build-base curl git make
+RUN apk add --no-cache build-base curl git make
 
 ARG PROTOC_VERSION=3.12.4
 ARG PROTO_GO_VERSION=1.3.5
@@ -18,7 +17,7 @@ RUN cd /tmp && mkdir -p protobuf-src \
     && go get -d -u github.com/envoyproxy/protoc-gen-validate \
     && make build -C $GOPATH/src/github.com/envoyproxy/protoc-gen-validate
 
-FROM python:3.7-slim
+FROM python:3.7.9-buster
 
 COPY --from=builder \
     /go/bin/protoc \
@@ -47,9 +46,9 @@ ENV \
     PROTOTOOL_PROTOC_WKT_PATH=/usr/include
 
 RUN cd /tmp \
-    && sed 's/deb.debian.org/mirrors.aliyun.com/g' -i /etc/apt/sources.list \
-    && sed 's/security.debian.org/mirrors.aliyun.com/g' -i /etc/apt/sources.list \
-    && apt-get update && apt-get install -y git curl rsync jq \
+    && sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
+    && sed -i 's|security.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
+    && apt-get update && apt-get install -y --no-install-recommends git curl rsync jq && rm -rf /var/lib/apt/lists/* \
     && curl -sSL https://storage.googleapis.com/dart-archive/channels/stable/release/$DART_VERSION/linux_packages/dart_$DART_VERSION-1_amd64.deb -o dart.deb \
     && dpkg -i dart.deb \
     && cd /opt/protobuf-src && pub global activate protoc_plugin && cd /tmp \
