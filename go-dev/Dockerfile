@@ -1,6 +1,6 @@
 FROM golang:1.15.0-alpine AS builder
 
-RUN apk add --no-cache build-base curl git make
+RUN apk add --no-cache alpine-sdk
 
 ENV \
     CGO_ENABLED=0 \
