@@ -1,6 +1,6 @@
 FROM golang:1.15.0-alpine AS builder
 
-RUN apk add --no-cache alpine-sdk
+RUN apk add --no-cache alpine-sdk upx
 
 ENV \
     CGO_ENABLED=0 \
@@ -10,7 +10,8 @@ RUN cd /tmp \
     && go get -u github.com/mgechev/revive \
     && go get -u github.com/rakyll/statik \
     && go get -u github.com/izhaohu/migrate \
-    && go get -u github.com/kyoh86/richgo
+    && go get -u github.com/kyoh86/richgo \
+    && upx /go/bin/*
 
 FROM izhaohucom/protogen AS protogen
 
@@ -51,7 +52,7 @@ ENV \
 
 RUN cd /tmp \
     && sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
-    && sed -i 's|security.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list
+    && sed -i 's|security.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y --no-install-recommends git upx jq && rm -rf /var/lib/apt/lists/* \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone \
     && mkdir -p ~/.kube ~/.ssh && chmod 700 ~/.ssh \

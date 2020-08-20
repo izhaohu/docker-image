@@ -1,13 +1,13 @@
 FROM golang:1.15.0-alpine AS builder
 
-RUN apk add --no-cache alpine-sdk
+RUN apk add --no-cache alpine-sdk upx
 
 ENV \
     CGO_ENABLED=0 \
     GO111MODULE=on
 
-RUN cd /tmp \
-    && go get -u github.com/izhaohu/migrate
+RUN go get -u github.com/izhaohu/migrate \
+    && upx /go/bin/*
 
 FROM mysql:5.7.31
 

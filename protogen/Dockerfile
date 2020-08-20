@@ -1,6 +1,6 @@
 FROM golang:1.15.0-alpine AS builder
 
-RUN apk add --no-cache alpine-sdk
+RUN apk add --no-cache alpine-sdk upx
 
 ARG PROTOC_VERSION=3.12.4
 ARG PROTOC_GO_VERSION=1.3.5
@@ -17,7 +17,8 @@ RUN cd /tmp && mkdir -p protobuf-src \
     && wget -qO- https://github.com/uber/prototool/releases/download/v$PROTOTOOL_VERSION/prototool-Linux-x86_64.tar.gz | tar zxf - && mv prototool/bin/prototool $GOPATH/bin/prototool \
     && go get -u github.com/golang/protobuf/protoc-gen-go@v$PROTOC_GO_VERSION \
     && go get -d github.com/envoyproxy/protoc-gen-validate@v$PROTOC_VALIDATE \
-    && make build -C `go env GOMODCACHE`/github.com/envoyproxy/protoc-gen-validate@v$PROTOC_VALIDATE
+    && make build -C `go env GOMODCACHE`/github.com/envoyproxy/protoc-gen-validate@v$PROTOC_VALIDATE \
+    && upx /go/bin/*
 
 FROM python:3.7.9-buster
 
