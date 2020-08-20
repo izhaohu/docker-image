@@ -2,10 +2,12 @@ FROM golang:1.15.0-alpine AS builder
 
 RUN apk add --no-cache build-base curl git make
 
-ENV CGO_ENABLED=0
+ENV \
+    CGO_ENABLED=0 \
+    GO111MODULE=on
 
 RUN cd /tmp \
-    && go get -u github.com/libgo/migrate
+    && go get -u github.com/izhaohu/migrate
 
 FROM mysql:5.7.31
 

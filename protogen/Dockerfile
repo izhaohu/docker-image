@@ -6,7 +6,9 @@ ARG PROTOC_VERSION=3.12.4
 ARG PROTO_GO_VERSION=1.3.5
 ARG PROTOTOOL_VERSION=1.10.0
 
-ENV CGO_ENABLED=0
+ENV \
+    CGO_ENABLED=0 \
+    GO111MODULE=on
 
 RUN cd /tmp && mkdir -p protobuf-src \
     && curl -sSL https://github.com/protocolbuffers/protobuf/releases/download/v$PROTOC_VERSION/protobuf-all-$PROTOC_VERSION.tar.gz | tar zxf - -C protobuf-src --strip-components 1 \

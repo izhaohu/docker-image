@@ -2,12 +2,14 @@ FROM golang:1.15.0-alpine AS builder
 
 RUN apk add --no-cache build-base curl git make
 
-ENV CGO_ENABLED=0
+ENV \
+    CGO_ENABLED=0 \
+    GO111MODULE=on
 
 RUN cd /tmp \
     && go get -u github.com/mgechev/revive \
     && go get -u github.com/rakyll/statik \
-    && go get -u github.com/libgo/migrate \
+    && go get -u github.com/izhaohu/migrate \
     && go get -u github.com/kyoh86/richgo
 
 FROM izhaohucom/protogen AS protogen
@@ -41,6 +43,7 @@ COPY --from=bot \
 
 ENV \
     CGO_ENABLED=0 \
+    GO111MODULE=on \
     GOPROXY="https://goproxy.cn,direct" \
     GOPRIVATE="code.izhaohu.com" \
     PROTOTOOL_PROTOC_BIN_PATH=/usr/local/bin/protoc \
