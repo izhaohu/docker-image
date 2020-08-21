@@ -58,7 +58,7 @@ RUN cd /tmp \
     && wget -qO /usr/local/bin/protoc-gen-grpc-web https://github.com/grpc/grpc-web/releases/download/$PROTOC_GEN_GRPC_WEB_VERSION/protoc-gen-grpc-web-$PROTOC_GEN_GRPC_WEB_VERSION-linux-x86_64 \
     && chmod +x /usr/local/bin/protoc-gen-grpc-web \
     && wget -qO /tmp/protoc-gen-doc.tgz https://github.com/pseudomuto/protoc-gen-doc/releases/download/v$PROTOC_GEN_GRPC_DOC_VERSION/protoc-gen-doc-$PROTOC_GEN_GRPC_DOC_VERSION.linux-amd64.go1.12.6.tar.gz \
-    && tar zxvf /tmp/protoc-gen-doc.tgz -C /usr/local/bin --strip-components 1 \
+    && tar zxf /tmp/protoc-gen-doc.tgz -C /usr/local/bin --strip-components 1 \
     && upx /usr/local/bin/protoc-gen-grpc-web /usr/local/bin/protoc-gen-doc \
     && pip3 install grpcio grpcio-tools \
     && ln -sf /bin/bash /bin/sh \
