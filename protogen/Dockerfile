@@ -51,7 +51,7 @@ ENV \
 RUN cd /tmp \
     && sed -i 's|deb.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
     && sed -i 's|security.debian.org|mirrors.aliyun.com|g' /etc/apt/sources.list \
-    && apt-get update && apt-get install -y --no-install-recommends git curl rsync jq && rm -rf /var/lib/apt/lists/* \
+    && apt-get update && apt-get install -y --no-install-recommends git curl rsync upx jq && rm -rf /var/lib/apt/lists/* \
     && wget -qO dart.deb https://storage.googleapis.com/dart-archive/channels/stable/release/$DART_VERSION/linux_packages/dart_$DART_VERSION-1_amd64.deb \
     && dpkg -i dart.deb \
     && cd /opt/protobuf-src && pub global activate protoc_plugin && cd /tmp \
@@ -59,6 +59,7 @@ RUN cd /tmp \
     && chmod +x /usr/local/bin/protoc-gen-grpc-web \
     && wget -qO /tmp/protoc-gen-doc.tgz https://github.com/pseudomuto/protoc-gen-doc/releases/download/v$PROTOC_GEN_GRPC_DOC_VERSION/protoc-gen-doc-$PROTOC_GEN_GRPC_DOC_VERSION.linux-amd64.go1.12.6.tar.gz \
     && tar zxvf /tmp/protoc-gen-doc.tgz -C /usr/local/bin --strip-components 1 \
+    && upx /usr/local/bin/protoc-* \
     && pip3 install grpcio grpcio-tools \
     && ln -sf /bin/bash /bin/sh \
     && rm -rf /tmp/*
