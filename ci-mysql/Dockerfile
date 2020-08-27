@@ -11,7 +11,7 @@ RUN go get -u github.com/izhaohu/migrate \
 
 FROM mysql:5.7.31
 
-RUN apt-get update && apt-get install -y --no-install-recommends git curl rsync jq && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends git curl rsync jq ca-certificates && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder \
     /go/bin/migrate \
