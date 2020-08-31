@@ -8,14 +8,14 @@ docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
 VERSION=v1.18.8
 echo -e "\033[32m[ '${VERSION}' ]\033[0m"
 
-wget -O ./kubeadm https://storage.googleapis.com/kubernetes-release/release/$VERSION/bin/linux/amd64/kubeadm
+wget -qO ./kubeadm https://storage.googleapis.com/kubernetes-release/release/$VERSION/bin/linux/amd64/kubeadm
 chmod +x ./kubeadm
 
 repositories=$(./kubeadm config images list --kubernetes-version=$VERSION)
 
-for repository in "${repositories[@]}"; do
+while IFS='/' read -r user repository; do
   echo -e "\033[34m[ '${repository}' ]\033[0m"
-  docker pull k8s.gcr.io/"${repository}"
-  docker tag k8s.gcr.io/"${repository}" izhaohucom/"${repository}"
+  docker pull "${user}"/"${repository}"
+  docker tag "${user}"/"${repository}" izhaohucom/"${repository}"
   docker push izhaohucom/"${repository}"
-done
+done <<<"${repositories}"
