@@ -1,6 +1,6 @@
 # Docker Images
 
-![build](https://img.shields.io/github/workflow/status/izhaohu/docker-image/build/master?style=for-the-badge)
+![build](https://img.shields.io/github/workflow/status/izhaohu/docker-image/build/open?style=for-the-badge)
 
 ## Step
 
