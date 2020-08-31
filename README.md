@@ -19,6 +19,12 @@
     node  flutter
 ```
 
+## Usage
+
+```
+docker pull izhaohucom/${repository}:${version}
+```
+
 ## Badge
 
 | repository        | version                                                                                                | layer                                                                                                            | size                                                                                                            |

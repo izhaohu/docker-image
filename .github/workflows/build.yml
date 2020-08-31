@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh alpine
+        run: bash build.sh alpine
   alpine-glibc:
     name: alpine-glibc
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh alpine-glibc
+        run: bash build.sh alpine-glibc
   alpine-glibc-grpc:
     name: alpine-glibc-grpc
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh alpine-glibc-grpc
+        run: bash build.sh alpine-glibc-grpc
   ci-bot:
     name: ci-bot
     runs-on: ubuntu-latest
@@ -44,7 +44,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh ci-bot
+        run: bash build.sh ci-bot
   ci-mysql:
     name: ci-mysql
     runs-on: ubuntu-latest
@@ -52,7 +52,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh ci-mysql
+        run: bash build.sh ci-mysql
   ci-tidb:
     name: ci-tidb
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh ci-tidb
+        run: bash build.sh ci-tidb
   go-dev:
     name: go-dev
     runs-on: ubuntu-latest
@@ -72,7 +72,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh go-dev
+        run: bash build.sh go-dev
   flutter:
     name: flutter
     runs-on: ubuntu-latest
@@ -82,7 +82,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh flutter
+        run: bash build.sh flutter
   node:
     name: node
     runs-on: ubuntu-latest
@@ -92,7 +92,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh node
+        run: bash build.sh node
   protogen:
     name: protogen
     runs-on: ubuntu-latest
@@ -100,4 +100,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build
-        run: sh build.sh protogen
+        run: bash build.sh protogen
