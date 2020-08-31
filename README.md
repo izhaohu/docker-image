@@ -2,6 +2,16 @@
 
 ![build](https://img.shields.io/github/workflow/status/izhaohu/docker-image/build/k8s?style=for-the-badge)
 
+## Usage
+
+```
+docker pull izhaohucom/${repository}:${version}
+```
+
+## Version
+
+- v1.18.8
+
 ## Badge
 
 | repository              | version                                                                                                            | layer                                                                                                                        | size                                                                                                                        |
