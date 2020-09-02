@@ -1,4 +1,4 @@
-FROM golang:1.15.0-alpine AS builder
+FROM golang:1.15.1-alpine AS builder
 
 RUN apk add --no-cache alpine-sdk upx
 
