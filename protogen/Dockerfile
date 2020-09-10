@@ -1,4 +1,4 @@
-FROM golang:1.15.1-alpine AS builder
+FROM golang:1.15.2-alpine AS builder
 
 RUN apk add --no-cache alpine-sdk upx
 
@@ -37,7 +37,7 @@ COPY --from=builder \
     /tmp/protobuf-src \
     /opt/protobuf-src
 
-ARG DART_VERSION=2.8.1
+ARG DART_VERSION=2.8.4
 ARG PROTOC_GEN_GRPC_DOC_VERSION=1.3.2
 ARG PROTOC_GEN_GRPC_WEB_VERSION=1.0.7
 

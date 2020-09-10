@@ -1,6 +1,6 @@
 FROM izhaohucom/protogen AS protogen
 
-FROM cirrusci/flutter:1.17.1
+FROM cirrusci/flutter:1.17.5
 
 COPY --from=protogen \
     /usr/local/bin/protoc \
@@ -21,7 +21,7 @@ ENV \
     PATH=$PATH:$HOME/.pub-cache/bin \
     GRADLE_OPTS="-Dorg.gradle.parallel=true -Dorg.gradle.daemon=false"
 
-RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29" "build-tools;29.0.1" 1>/dev/null \
+RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29" "build-tools;29.0.3" 1>/dev/null \
     && GRADLE_VERSION=5.6.4 \
     && sudo mkdir -p $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/ankdp27end7byghfw1q2sw75f \
     && cd $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/ankdp27end7byghfw1q2sw75f \
