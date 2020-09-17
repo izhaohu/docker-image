@@ -11,6 +11,7 @@ docker pull izhaohucom/${repository}:${version}
 ## Version
 
 - v1.18.8
+- v1.18.9
 
 ## Badge
 
