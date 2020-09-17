@@ -20,7 +20,7 @@ RUN cd /tmp && mkdir -p protobuf-src \
     && make build -C `go env GOMODCACHE`/github.com/envoyproxy/protoc-gen-validate@v$PROTOC_VALIDATE \
     && upx /go/bin/*
 
-FROM python:3.7.9-buster
+FROM python:3.8.5-buster
 
 COPY --from=builder \
     /go/bin/protoc \

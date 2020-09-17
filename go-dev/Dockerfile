@@ -9,7 +9,6 @@ ENV \
 RUN cd /tmp \
     && go get -u github.com/mgechev/revive \
     && go get -u github.com/rakyll/statik \
-    && go get -u github.com/izhaohu/migrate \
     && go get -u github.com/kyoh86/richgo \
     && upx /go/bin/*
 
@@ -22,7 +21,6 @@ FROM golang:1.15.2-buster
 COPY --from=builder \
     /go/bin/revive \
     /go/bin/statik \
-    /go/bin/migrate \
     /go/bin/richgo \
     /usr/local/bin/
 
