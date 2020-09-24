@@ -1,6 +1,6 @@
 FROM izhaohucom/alpine-glibc
 
-ARG DOCKER_VERSION=19.03.12
+ARG DOCKER_VERSION=19.03.13
 ARG K8S_VERSION=1.18.9
 
 RUN apk add --no-cache alpine-sdk openssh-client rsync jq
