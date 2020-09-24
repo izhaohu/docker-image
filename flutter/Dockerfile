@@ -22,10 +22,8 @@ ENV \
     GRADLE_OPTS="-Dorg.gradle.parallel=true -Dorg.gradle.daemon=false"
 
 RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29" "build-tools;29.0.3" 1>/dev/null \
-    && GRADLE_VERSION=6.1.1 \
-    && sudo mkdir -p $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/cfmwm155h49vnt3hynmlrsdst \
-    && cd $HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/cfmwm155h49vnt3hynmlrsdst \
-    && sudo wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
-    && sudo chown -R cirrus:cirrus $HOME/.gradle \
+    && GRADLE_VERSION=6.1.1 && GRADLE_PATH=$HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/cfmwm155h49vnt3hynmlrsdst \
+    && mkdir -p $GRADLE_VERSION && cd $GRADLE_VERSION \
+    && wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
     && cd /tmp/protobuf-src && pub global activate protoc_plugin \
-    && sudo rm -rf /tmp/*
+    && rm -rf /tmp/*
