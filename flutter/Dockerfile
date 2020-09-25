@@ -1,6 +1,6 @@
 FROM izhaohucom/protogen AS protogen
 
-FROM cirrusci/flutter:1.20.4
+FROM cirrusci/flutter:1.17.5
 
 COPY --from=protogen \
     /usr/local/bin/protoc \
