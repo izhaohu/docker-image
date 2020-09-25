@@ -29,4 +29,4 @@ RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29
     && sudo wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
     && sudo chown -R cirrus:cirrus $HOME/.gradle \
     && cd /tmp/protobuf-src && pub global activate protoc_plugin \
-    && rm -rf /tmp/*
+    && sudo rm -rf /tmp/*
