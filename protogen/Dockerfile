@@ -4,7 +4,7 @@ RUN apk add --no-cache alpine-sdk upx
 
 ARG PROTOC_VERSION=3.12.4
 ARG PROTOC_GO_VERSION=1.3.5
-ARG PROTOC_VALIDATE=0.4.1
+ARG PROTOC_VALIDATE=0.4.0
 ARG PROTOTOOL_VERSION=1.10.0
 
 ENV \
@@ -42,9 +42,9 @@ ARG PROTOC_GEN_GRPC_DOC_VERSION=1.3.2
 ARG PROTOC_GEN_GRPC_WEB_VERSION=1.0.7
 
 ENV \
+    PATH=$PATH:/usr/lib/dart/bin:/root/.pub-cache/bin \
     PUB_HOSTED_URL=https://pub.flutter-io.cn \
     FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn \
-    PATH=$PATH:/usr/lib/dart/bin:/root/.pub-cache/bin \
     PROTOTOOL_PROTOC_BIN_PATH=/usr/local/bin/protoc \
     PROTOTOOL_PROTOC_WKT_PATH=/usr/include
 
