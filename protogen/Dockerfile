@@ -1,4 +1,4 @@
-FROM golang:1.15.2-alpine AS builder
+FROM golang:1.15.3-alpine AS builder
 
 RUN apk add --no-cache alpine-sdk upx
 
@@ -20,7 +20,7 @@ RUN cd /tmp && mkdir -p protobuf-src \
     && make build -C `go env GOMODCACHE`/github.com/envoyproxy/protoc-gen-validate@v$PROTOC_VALIDATE \
     && upx /go/bin/*
 
-FROM python:3.8.6-buster
+FROM python:3.9.0-buster
 
 COPY --from=builder \
     /go/bin/protoc \
@@ -37,7 +37,7 @@ COPY --from=builder \
     /tmp/protobuf-src \
     /opt/protobuf-src
 
-ARG DART_VERSION=2.9.3
+ARG DART_VERSION=2.8.4
 ARG PROTOC_GEN_GRPC_DOC_VERSION=1.3.2
 ARG PROTOC_GEN_GRPC_WEB_VERSION=1.0.7
 
