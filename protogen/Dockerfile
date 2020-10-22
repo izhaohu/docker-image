@@ -37,7 +37,7 @@ COPY --from=builder \
     /tmp/protobuf-src \
     /opt/protobuf-src
 
-ARG DART_VERSION=2.8.4
+ARG DART_VERSION=2.9.3
 ARG PROTOC_GEN_GRPC_DOC_VERSION=1.3.2
 ARG PROTOC_GEN_GRPC_WEB_VERSION=1.0.7
 

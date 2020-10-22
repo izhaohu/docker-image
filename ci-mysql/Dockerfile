@@ -9,7 +9,7 @@ ENV \
 RUN go get -u github.com/izhaohu/migrate \
     && upx /go/bin/*
 
-FROM mysql:5.7.31
+FROM mysql:5.7.32
 
 RUN apt-get update && apt-get install -y --no-install-recommends git curl rsync jq ca-certificates && rm -rf /var/lib/apt/lists/*
 
