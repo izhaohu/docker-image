@@ -1,8 +1,8 @@
 FROM izhaohucom/protogen AS protogen
 
-FROM cirrusci/flutter:1.17.5
+FROM cirrusci/flutter:1.20.4
 
-ENV HOME=/home/cirrus
+ENV HOME=/root
 
 COPY --from=protogen \
     /usr/local/bin/protoc \
@@ -24,9 +24,8 @@ ENV \
     GRADLE_OPTS="-Dorg.gradle.parallel=true -Dorg.gradle.daemon=false"
 
 RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29" "build-tools;29.0.3" 1>/dev/null \
-    && GRADLE_VERSION=6.1.1 && GRADLE_PATH=$HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/cfmwm155h49vnt3hynmlrsdst \
-    && sudo mkdir -p $GRADLE_PATH && cd $GRADLE_PATH \
-    && sudo wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
-    && sudo chown -R cirrus:cirrus $HOME/.gradle \
+    && GRADLE_VERSION=5.6.2 && GRADLE_PATH=$HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/9st6wgf78h16so49nn74lgtbb \
+    && mkdir -p $GRADLE_PATH && cd $GRADLE_PATH \
+    && wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
     && cd /tmp/protobuf-src && pub global activate protoc_plugin \
-    && sudo rm -rf /tmp/*
+    && rm -rf /tmp/*
