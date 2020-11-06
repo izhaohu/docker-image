@@ -1,4 +1,4 @@
-FROM golang:1.15.3-alpine AS builder
+FROM golang:1.15.4-alpine AS builder
 
 RUN apk add --no-cache alpine-sdk upx
 
@@ -16,7 +16,7 @@ FROM izhaohucom/protogen AS protogen
 
 FROM izhaohucom/ci-bot AS bot
 
-FROM golang:1.15.3-buster
+FROM golang:1.15.4-buster
 
 COPY --from=builder \
     /go/bin/revive \
