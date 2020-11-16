@@ -15,7 +15,7 @@ chmod +x ./kubeadm
 
 repositories=$(./kubeadm config images list --kubernetes-version=$VERSION)
 
-echo "${repository}"
+echo "${repositories}"
 
 while IFS='/' read -r user repository; do
   echo -e "\033[34m[ ${repository} ]\033[0m"
