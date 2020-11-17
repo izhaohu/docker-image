@@ -27,5 +27,5 @@ RUN sdkmanager "platforms;android-28" "build-tools;28.0.3" "platforms;android-29
     && GRADLE_VERSION=5.6.2 && GRADLE_PATH=$HOME/.gradle/wrapper/dists/gradle-$GRADLE_VERSION-all/9st6wgf78h16so49nn74lgtbb \
     && mkdir -p $GRADLE_PATH && cd $GRADLE_PATH \
     && wget -q https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip \
-    && cd /tmp/protobuf-src && pub global activate protoc_plugin \
+    && cd /tmp/protobuf-src && pub global activate protoc_plugin 19.1.0 \
     && rm -rf /tmp/*
