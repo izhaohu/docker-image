@@ -54,7 +54,7 @@ RUN cd /tmp \
     && apt-get update && apt-get install -y --no-install-recommends git curl rsync upx jq && rm -rf /var/lib/apt/lists/* \
     && wget -qO dart.deb https://storage.googleapis.com/dart-archive/channels/stable/release/$DART_VERSION/linux_packages/dart_$DART_VERSION-1_amd64.deb \
     && dpkg -i dart.deb \
-    && cd /opt/protobuf-src && pub global activate protoc_plugin && cd /tmp \
+    && cd /opt/protobuf-src && pub global activate protoc_plugin 19.1.0 && cd /tmp \
     && wget -qO /usr/local/bin/protoc-gen-grpc-web https://github.com/grpc/grpc-web/releases/download/$PROTOC_GEN_GRPC_WEB_VERSION/protoc-gen-grpc-web-$PROTOC_GEN_GRPC_WEB_VERSION-linux-x86_64 \
     && chmod +x /usr/local/bin/protoc-gen-grpc-web \
     && wget -qO /tmp/protoc-gen-doc.tgz https://github.com/pseudomuto/protoc-gen-doc/releases/download/v$PROTOC_GEN_GRPC_DOC_VERSION/protoc-gen-doc-$PROTOC_GEN_GRPC_DOC_VERSION.linux-amd64.go1.12.6.tar.gz \

@@ -1,6 +1,6 @@
 FROM izhaohucom/protogen AS builder
 
-FROM node:12.18.4-buster
+FROM node:14.15.1-buster
 
 COPY --from=builder \
     /usr/local/bin/protoc \
