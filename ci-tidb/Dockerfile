@@ -1,4 +1,4 @@
-FROM pingcap/tidb:v4.0.9
+FROM pingcap/tidb:v4.0.10
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone
 
