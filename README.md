@@ -42,4 +42,4 @@ docker pull izhaohucom/${repository}:${version}
 
 ## License
 
-**APACHE LICENSE, VERSION 2.0**
+**APACHE LICENSE,VERSION 2.0**
